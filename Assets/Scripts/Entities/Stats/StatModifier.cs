@@ -76,3 +76,16 @@ public class Dash: StatModifier
         changeBaseValue = false;
     }
 }
+
+[System.Serializable]
+public class Slow: StatModifier
+{
+    public Slow(float multiplier)
+    {
+        applicationType = ApplicationType.MULTIPLY;
+        stat = StatEnum.WALKSPEED;
+        this.amount = multiplier/100;
+        beneficial = false;
+        changeBaseValue = false;
+    }
+}
