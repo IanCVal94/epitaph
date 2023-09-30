@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MandalaManager : MonoBehaviour {
     [SerializeField] private Transform axis;
-    [SerializeField] private Mandala mandala;
+    [SerializeField] private Transform mandala;
 
     //You a more robust system for updating the mandala position/enabling/disabling. Honestly I can make one if you need a sysarch guy.
     void Update() {
@@ -10,8 +10,6 @@ public class MandalaManager : MonoBehaviour {
         var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         UpdateMandala(mousePos);
     }
-
-    void Start() {Deactivate();}
     
     //Sets the mandala's position given mouse pos
     void UpdateMandala(Vector3 mousePos) {
@@ -34,14 +32,6 @@ public class MandalaManager : MonoBehaviour {
 
     //Think of it like the origin point for all spell vfx.
     public Vector2 GetMandalaCenter() {
-        return mandala.GetPos();
-    }
-
-    public void Activate() {
-        mandala.Activate();
-    }
-
-    public void Deactivate() {
-        mandala.Deactivate();
+        return (Vector2)mandala.position;
     }
 }

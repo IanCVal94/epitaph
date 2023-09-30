@@ -6,9 +6,7 @@ using UnityEngine;
 public class TestAugment : MonoBehaviour
 {
     [SerializeField]
-    private OnHitAugment onhit;
-    [SerializeField]
-    private ListenerAugment listener;
+    private Augment augment;
     [SerializeField]
     private AugmentManager augmentManager;
 
@@ -21,9 +19,8 @@ public class TestAugment : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            listener.enableAugment();
-            augmentManager.addAugment(listener);
-            augmentManager.startCoroutines();
+            augment.enableAugment();
+            augmentManager.addAugment(augment);
         }
     }
 }

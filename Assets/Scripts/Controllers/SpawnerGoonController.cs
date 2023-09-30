@@ -23,10 +23,10 @@ public class SpawnerGoonController : EnemyController
 
     private UnityEngine.Vector2 randomPos;
 
-    protected override void Start(){
+    void Start(){
         randomTime = Random.Range(shortestSpawnTime, longestSpawnTime + 1);
     }
-    protected void Update(){
+    void Update(){
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.velocity = Vector2.zero;
         GameObject target = GameObject.FindWithTag("Player");

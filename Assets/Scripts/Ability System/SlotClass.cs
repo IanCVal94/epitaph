@@ -5,13 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class SlotClass
 {
-    [SerializeField] private AbilityWrapper ability;
+    [SerializeField] private Ability ability;
     
     public SlotClass() {
         ability = null;
     }
 
-    public SlotClass (AbilityWrapper ability) {
+    public SlotClass (Ability ability) {
         this.ability = ability;
     }
 
@@ -19,19 +19,15 @@ public class SlotClass
         this.ability = slot.GetAbility();
     }
 
-    public AbilityWrapper GetAbility() {
+    public Ability GetAbility() {
         return ability;
     }
     
-    public void AddAbility(AbilityWrapper ability) {
+    public void AddAbility(Ability ability) {
         this.ability = ability;
     }
 
     public void Clear() {
         this.ability = null;
-    }
-
-    public bool isClear() {
-        return this.ability == null;
     }
 }

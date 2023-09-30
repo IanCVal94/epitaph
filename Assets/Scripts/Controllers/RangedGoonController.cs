@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class RangedGoonController : EnemyController
 {
-    [SerializeField] private GameObject target;
-    public EnemyProjectile projectile;
+
+    public GameObject projectile;
+    public Transform projectilePos;
     private float timer;
 
     public float distanceAway;
 
     public float unloadSpeed;
     
-    protected override void Update() {
+    void Update(){
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        GameObject target = GameObject.FindWithTag("Player");
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < distanceAway)
         {
-            Debug.Log("away");
             agent.velocity = Vector2.zero;
+            // Add shoot logic with damage to player
             timer += Time.deltaTime;
             if (timer > unloadSpeed)
             {
-                timer = 0f;
+                // Spawn Bullet or whatever else
+                timer = 0;
                 Shoot();
             }
         }
     }
 
     void Shoot(){
-        Projectile proj = Instantiate(projectile, gameObject.transform.position, Quaternion.identity);
-        proj.parent = gameObject;
-
+        Instantiate(projectile, projectilePos.position, Quaternion.identity);
     }
 }
